@@ -26,3 +26,7 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * For each individual item create Cart Item widget using Card, ListTile, FittedBox widgets.
 * Add functionality of deleting individual item from the list using Dismmisable widget and custoimize according to the needs.
 * Add few widgets to product detail screen just for showing purpose.
+* Add Place Order functionality by adding new Orders Provider and define order & order item data model, add respective methods and then call add order logic from Place order onPressed.
+* Add Orders Screen to show all the orders and then create order item widget to show each order using Card, ListTile, Column widgets.
+* Create App drawer widget using Drawer, Divider, ListTile widgets and add to Shop & Orders page to go Product Overview Screen & Orders Page.
+* Add expanded functionality to order item card by using setState of order item widget by converting it into stateful widget.
