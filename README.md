@@ -1,7 +1,4 @@
-# shop_app
-
-Shopping App
-
+# Shopping App
 ## Getting Started
 
 * Prepare product overview screen to show the list of products using GridView widget.
@@ -18,3 +15,6 @@ Shopping App
 * Register the provider for eevry single product (registering provider at product grid level).
 * Read the product data in product item widget using provider (no need to paas data through constructor).
 * Do improvement to use consumer to build only sepecific part of the widget using Consumer (no need to build the wholw widget).
+* Add Filter for show Favorites by converting Products Overview Screen to stateful widget as we only want to show Favorites filter to applied to this screen not globally so we refresh the widget in onState method and then pass the showFavorite to each product grids where we can filter the data based on the flag.
+* Use ChangeNotifierProvider.value if you have already created an instance of the ChangeNotifier class. This type of situation might be happen if you had initialized your ChangeNotifier class in the initState() method of your StatefulWidget's State class.
+In that case, you wouldn't want to create a whole new instance of your ChangeNotifier because you would be wasting any initialization work that you had already done. Using the ChangeNotifierProvider.value constructor allows you to provide your pre-created ChangeNotifier value.Take special note that there isn't a create parameter here, but a value parameter. That's where you pass in your ChangeNotifier class instance. Again, don't try to create a new instance there.
