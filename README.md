@@ -20,3 +20,9 @@
 In that case, you wouldn't want to create a whole new instance of your ChangeNotifier because you would be wasting any initialization work that you had already done. Using the ChangeNotifierProvider.value constructor allows you to provide your pre-created ChangeNotifier value.Take special note that there isn't a create parameter here, but a value parameter. That's where you pass in your ChangeNotifier class instance. Again, don't try to create a new instance there.
 * Add cart data provider & define cart item data model.
 * Register Cart provider in main app, change single ChangeNotifierProvider to MultiProvider.
+* Add Badge as App Bar action and then warp it with Consumer to listen to changes to Cart Provider.
+* Add Cart Screen and add widgets to it, use Chip, Spacer, Card widgets etc.
+* To display items of the cart we have to add List to column which cannot be inserted directly so we have wrap it with Expanded widget.
+* For each individual item create Cart Item widget using Card, ListTile, FittedBox widgets.
+* Add functionality of deleting individual item from the list using Dismmisable widget and custoimize according to the needs.
+* Add few widgets to product detail screen just for showing purpose.
