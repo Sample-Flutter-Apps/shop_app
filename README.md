@@ -30,3 +30,6 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * Add Orders Screen to show all the orders and then create order item widget to show each order using Card, ListTile, Column widgets.
 * Create App drawer widget using Drawer, Divider, ListTile widgets and add to Shop & Orders page to go Product Overview Screen & Orders Page.
 * Add expanded functionality to order item card by using setState of order item widget by converting it into stateful widget.
+
+* Add Snackbar to show message "item added" and also SnackBarAction to undo the action.
+* Add Dialog on Cart screen on dismissing any cart item, Alert Dialog to get confirmation from user.
