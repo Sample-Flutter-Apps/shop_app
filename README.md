@@ -33,3 +33,7 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 
 * Add Snackbar to show message "item added" and also SnackBarAction to undo the action.
 * Add Dialog on Cart screen on dismissing any cart item, Alert Dialog to get confirmation from user.
+* Prepare user prodcuts screen & user product item widget using ListView, ListTile, CircleAvatar etc.
+* Add Edit Product Screen which contains Form Widget & Form Items with SingleChildScrollableView with column so the items becomes scrollable if list gets too large (with ListView once gets out of scope the data is lost).
+* Add FormTextField add InputType, InputAction, OnSubmitted, ChangingFocus etc.
+* Add Description and also dispose FocusNodes to avoid memory leaks.
