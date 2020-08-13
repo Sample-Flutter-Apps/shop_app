@@ -45,12 +45,28 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavourite).toList();
   }
 
-  void addProduct() {
-    // _items.add();
+  void addProduct(Product product) {
+    Product newProduct = new Product(
+      id: DateTime.now().toString(),
+      title: product.title,
+      price: product.price,
+      description: product.description,
+      imageUrl: product.imageUrl,
+    );
+    _items.add(newProduct);
     notifyListeners();
   }
 
-  
+  void updateProduct(String productId, Product product){
+    int _prodIndex = _items.indexWhere((prod) => prod.id == productId);
+    _items[_prodIndex] = product;
+    notifyListeners(); 
+  }
+
+  void deleteProduct(String productId){
+    _items.removeWhere((prod) => prod.id == productId);
+    notifyListeners();
+  }
 
   Product findById(String id) {
     return _items.firstWhere((prod) => prod.id == id);

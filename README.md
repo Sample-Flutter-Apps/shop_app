@@ -37,3 +37,9 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * Add Edit Product Screen which contains Form Widget & Form Items with SingleChildScrollableView with column so the items becomes scrollable if list gets too large (with ListView once gets out of scope the data is lost).
 * Add FormTextField add InputType, InputAction, OnSubmitted, ChangingFocus etc.
 * Add Description and also dispose FocusNodes to avoid memory leaks.
+* Add Image Url field and Image viewer to view image when image is entered and done is pressed or focus is removed.
+* Add Form Submit function to trigger form save functionality.
+* Add validation to form and run validators for all text fields before save and check if evrything is fine then run save.
+* On Save add product using Products provider and pop the page to go back to previous list.
+* Update product on click of edit and update the using provider, setting initial valus for the existing product using initValues and textcontroller is case if controller is used.
+* Add Delete functionality by using provider.
