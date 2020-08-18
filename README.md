@@ -43,3 +43,11 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * On Save add product using Products provider and pop the page to go back to previous list.
 * Update product on click of edit and update the using provider, setting initial valus for the existing product using initValues and textcontroller is case if controller is used.
 * Add Delete functionality by using provider.
+
+* Add http calls to add product using firebase realtime database.
+* Add loading spinnner using Future of http post.
+* Add error handling using catch error of future calls.
+* Making method async automatically makes method to return Future<void>.
+* Convert the http method calls to async await and replace then with try-catch-finally blocks.
+
+

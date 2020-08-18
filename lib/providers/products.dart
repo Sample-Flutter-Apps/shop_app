@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:shop_app/providers/product.dart';
 
 class Products with ChangeNotifier {
@@ -45,25 +48,40 @@ class Products with ChangeNotifier {
     return _items.where((prodItem) => prodItem.isFavourite).toList();
   }
 
-  void addProduct(Product product) {
-    Product newProduct = new Product(
-      id: DateTime.now().toString(),
-      title: product.title,
-      price: product.price,
-      description: product.description,
-      imageUrl: product.imageUrl,
-    );
-    _items.add(newProduct);
+  Future<void> addProduct(Product product) async {
+    const url = 'https://glossy-calculus-279617.firebaseio.com/products.json';
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode({
+          'title': product.title,
+          'description': product.description,
+          'imageUrl': product.imageUrl,
+          'price': product.price,
+          'isFavourite': product.isFavourite,
+        }),
+      );
+      Product newProduct = new Product(
+        id: json.decode(response.body)['name'],
+        title: product.title,
+        price: product.price,
+        description: product.description,
+        imageUrl: product.imageUrl,
+      );
+      _items.add(newProduct);
+      notifyListeners();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  void updateProduct(String productId, Product product) {
+    int _prodIndex = _items.indexWhere((prod) => prod.id == productId);
+    _items[_prodIndex] = product;
     notifyListeners();
   }
 
-  void updateProduct(String productId, Product product){
-    int _prodIndex = _items.indexWhere((prod) => prod.id == productId);
-    _items[_prodIndex] = product;
-    notifyListeners(); 
-  }
-
-  void deleteProduct(String productId){
+  void deleteProduct(String productId) {
     _items.removeWhere((prod) => prod.id == productId);
     notifyListeners();
   }
