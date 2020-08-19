@@ -1,6 +1,9 @@
-import 'package:flutter/foundation.dart';
+import 'dart:convert';
 
-class Product with ChangeNotifier{
+import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
+
+class Product with ChangeNotifier {
   final String id;
   final String title;
   final String description;
@@ -17,8 +20,24 @@ class Product with ChangeNotifier{
     this.isFavourite = false,
   });
 
-  void changeFavouriteStatus(){
+  Future<void> changeFavouriteStatus() async {
+    bool oldStatus = isFavourite;
     isFavourite = !isFavourite;
     notifyListeners();
+    final url =
+        'https://glossy-calculus-279617.firebaseio.com/products/$id.json';
+    try {
+      final response = await http.patch(
+        url,
+        body: json.encode({'isFavourite': isFavourite}),
+      );
+      if (response.statusCode >= 400) {
+        isFavourite = oldStatus;
+        notifyListeners();
+      }
+    } catch (error) {
+      isFavourite = oldStatus;
+      notifyListeners();
+    }
   }
 }

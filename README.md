@@ -50,4 +50,15 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * Making method async automatically makes method to return Future<void>.
 * Convert the http method calls to async await and replace then with try-catch-finally blocks.
 
+* Fetch the products from firebase in didChangeDependencies lfecycle method as will be called often to avoid maintain a flag and just turn it off after first run and initialize data there.
+* Provider.of(context) will not work inInit method as of(context) does not work there its not wired completely.
+* Add pull to refresh functionality on user product screen by RefreshIndicator widget and then call products provider to get and set the products.
+* Add update product functionality by send patch request to firebase.
+* Add delete product functionality using optimistic delete approach.
+* Add isFavourite functionality by adding patch request in Product provider class using optimistic update.
+
+* Add order in firebase by post data in order provider method.
+* Add functionality to fetch and set order to provider & call it in inInit lifecycle method (first convert it to Stateful Widget) of OrderScreen with using Future delayed functionality and registering a callback to set to fetch and set the orders.
+* An alternate for above point is to use FutureBuilder (convert it back to Stateless widget) and give your provider data to future and then in builder based on ConnectionState of dataSnaphot show your widgets, for list wrap it with Consumers<Orders> so it rebuilds on changes.
+
 
