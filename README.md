@@ -61,4 +61,10 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * Add functionality to fetch and set order to provider & call it in inInit lifecycle method (first convert it to Stateful Widget) of OrderScreen with using Future delayed functionality and registering a callback to set to fetch and set the orders.
 * An alternate for above point is to use FutureBuilder (convert it back to Stateless widget) and give your provider data to future and then in builder based on ConnectionState of dataSnaphot show your widgets, for list wrap it with Consumers<Orders> so it rebuilds on changes.
 
+* Add Auth Screen.
+* Create Auth Provider to handle auth logic for signUp & signIn.
+* Add error for signUp & signIn funcionality.
+* Make main dart MaterialApp widget consumer of auth provider so if anything changes with auth the widget is re-rendered.
+* It also help to check if Auth provider has valid then decide whether to go to Login or Product Overview Screen.
+* After signUp or signIn set the userId, expiryDate, Token from response and then notifyListeners so that Consumers can listen to it like MatreialApp in main file.
 
