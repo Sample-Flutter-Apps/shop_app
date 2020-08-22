@@ -20,16 +20,18 @@ class Product with ChangeNotifier {
     this.isFavourite = false,
   });
 
-  Future<void> changeFavouriteStatus() async {
+  Future<void> changeFavouriteStatus(String token, String userId) async {
     bool oldStatus = isFavourite;
     isFavourite = !isFavourite;
     notifyListeners();
     final url =
-        'https://glossy-calculus-279617.firebaseio.com/products/$id.json';
+        'https://glossy-calculus-279617.firebaseio.com/userFavourites/$userId/$id.json?auth=$token';
     try {
-      final response = await http.patch(
+      final response = await http.put(
         url,
-        body: json.encode({'isFavourite': isFavourite}),
+        body: json.encode(
+          isFavourite,
+        ),
       );
       if (response.statusCode >= 400) {
         isFavourite = oldStatus;

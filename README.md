@@ -68,3 +68,9 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * It also help to check if Auth provider has valid then decide whether to go to Login or Product Overview Screen.
 * After signUp or signIn set the userId, expiryDate, Token from response and then notifyListeners so that Consumers can listen to it like MatreialApp in main file.
 
+* To pass auth token to Products Provider we can create a constructor to get token and change it registration of ChangeNotifierProvider to ChangeNotifierProxyProvider which can also trigger with the change in other provider so we can declare it as a proxy for Auth and target for Products so in update we will get auth object & previous state of target which is Products hence we can pass both the data to Products provider constructor and then attach the token to every HTTP request.
+* Add token to change favourite status request we can pass token in the method by getting data using Auth Provider.
+* For Orders also to get the token use the same trick used for Products provider.
+* Also adjust to query to show all products in ProductOverviewScreen & only user created products in UserProductsScreen so in that case we can FutureBuilder which in future can trigger the call to our Provider to get user filtered data and wrap our list with the Consumer of Products so that part is rebuilds when there is change in Products provider in addition to avoid any infinite loop if we listen to Products provider for the whole widget.
+
+
