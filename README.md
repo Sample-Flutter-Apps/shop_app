@@ -72,5 +72,10 @@ In that case, you wouldn't want to create a whole new instance of your ChangeNot
 * Add token to change favourite status request we can pass token in the method by getting data using Auth Provider.
 * For Orders also to get the token use the same trick used for Products provider.
 * Also adjust to query to show all products in ProductOverviewScreen & only user created products in UserProductsScreen so in that case we can FutureBuilder which in future can trigger the call to our Provider to get user filtered data and wrap our list with the Consumer of Products so that part is rebuilds when there is change in Products provider in addition to avoid any infinite loop if we listen to Products provider for the whole widget.
-
+* Adjust orders request for userId by adding userId for all HTTP request.
+* Add logout functionality, add logout button to App drawer and then onPressed set all the auth object proeprties to null and just notify the listeners also pop the app drawer from widget stack.
+* Adding AutoLogout functionality by starting a Timer for duration of token expire and then register the logout method after the timer is over and also cancel the timer once its logout.
+* Add AutoLogin functionality by storing logged in user data in device memory using shared preferences, then using Future try to fetch user data during starting of app from device if found then check if its valid or not found depend on that show the relevant screen.
+* Also on Logout by user remember to clear shared preferences data so that is does not auto login again.
+* Also On Logout navigate to home screen so that your Auth logic in main dart always runs after logout just to avoid unexpected behaviour.
 
