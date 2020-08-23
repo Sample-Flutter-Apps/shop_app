@@ -17,27 +17,31 @@ class _OrderItemState extends State<OrderItem> {
   bool _isExpanded = false;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.all(10),
-      child: Column(
-        children: [
-          ListTile(
-            title: Text('\$${widget.order.amount.toStringAsFixed(2)}'),
-            subtitle: Text(
-              DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      height:
+          _isExpanded ? min(widget.order.items.length * 20.0 + 110, 200) : 95,
+      child: Card(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          children: [
+            ListTile(
+              title: Text('\$${widget.order.amount.toStringAsFixed(2)}'),
+              subtitle: Text(
+                DateFormat('dd/MM/yyyy hh:mm').format(widget.order.dateTime),
+              ),
+              trailing: IconButton(
+                icon: Icon(_isExpanded ? Icons.expand_less : Icons.expand_more),
+                onPressed: () {
+                  setState(() {
+                    _isExpanded = !_isExpanded;
+                  });
+                },
+              ),
             ),
-            trailing: IconButton(
-              icon: Icon(_isExpanded ? Icons.expand_less : Icons.expand_more),
-              onPressed: () {
-                setState(() {
-                  _isExpanded = !_isExpanded;
-                });
-              },
-            ),
-          ),
-          if (_isExpanded)
-            Container(
-              height: min(widget.order.items.length * 20.0 + 10, 120),
+            AnimatedContainer(
+              duration: Duration(milliseconds: 300),
+              height: _isExpanded ? min(widget.order.items.length * 20.0 + 10, 100) : 0,
               child: ListView.builder(
                 padding: EdgeInsets.symmetric(
                   horizontal: 15,
@@ -67,7 +71,8 @@ class _OrderItemState extends State<OrderItem> {
                 },
               ),
             )
-        ],
+          ],
+        ),
       ),
     );
   }
